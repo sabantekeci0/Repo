@@ -1,0 +1,372 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TypeInto" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="890,1744" sap2010:WorkflowViewState.IdRef="TypeInto_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TypeInto" sap:VirtualizedContainerService.HintSize="900,1579" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="IsExistElement" />
+      <Variable x:TypeArguments="x:String" Name="WorkflowName" />
+      <Variable x:TypeArguments="x:String" Name="ScreenName" />
+      <Variable x:TypeArguments="x:String" Name="ElementName" />
+      <Variable x:TypeArguments="x:String" Name="ElementType" />
+      <Variable x:TypeArguments="x:String" Name="Selector" />
+      <Variable x:TypeArguments="x:Int32" Name="Timeout" />
+      <Variable x:TypeArguments="x:Int32" Name="ImageTimeout" />
+      <Variable x:TypeArguments="x:String" Name="ApplicationName" />
+      <Variable x:TypeArguments="x:String" Name="Value" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="858,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[WorkflowName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">Test</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ApplicationName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">Windows</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ScreenName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">ana</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[Selector]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["&lt;wnd app='notepad.exe' cls='Notepad' title='Yeni Metin Belgesi - Not Defteri' /&gt;&lt;wnd aaname='Yatay' cls='Edit' /&gt;&lt;ctrl name='Metin Düzenleyici' role='editabltext' /&gt;"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ElementName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">arama</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ElementType]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">textboxına</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[Value]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">deneme</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[Timeout]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">3000</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[ImageTimeout]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">3000</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="858,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilebiliyor mu? Kontrol edilecek. Selector : &quot; + Selector]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:UiElementExists DisplayName="Element Exists " Exists="[IsExistElement]" sap:VirtualizedContainerService.HintSize="858,51" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="87d22856-1a5b-44f9-98b4-3ab138339464" InformativeScreenshot="5879cf5062a669a3c1fa800e2c8c0ef7" Selector="[Selector]" TimeoutMS="[Timeout]" WaitForReady="INTERACTIVE" />
+      </ui:UiElementExists.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:UiElementExists>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="858,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilebiliyor mu? Kontrol edildi. IsExistElement : &quot; + IsExistElement.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <If sap2010:Annotation.AnnotationText="" Condition="[IsExistElement]" DisplayName="If : Element Exist" sap:VirtualizedContainerService.HintSize="858,1108" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Click Element via Selector" sap:VirtualizedContainerService.HintSize="242,325" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; selector ile &quot;+Value+&quot; yazılacak. Selector : &quot; + Selector]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DisplayName="Type Into : Value Text" EmptyField="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="True" Text="[Value]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="679318b4-15bb-42b2-a95b-4b82b5827a3a" InformativeScreenshot="6fbdb661a0b983a8e87b664843425a49" Selector="[Selector]" WaitForReady="INTERACTIVE">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+              </ui:Target>
+            </ui:TypeInto.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:TypeInto>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; selector ile &quot;+Value+&quot; yazıldı.&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Click Element via Image" sap:VirtualizedContainerService.HintSize="571,929" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Boolean" Name="IsExistElementImage" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="529,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilebiliyor mu? Image ile kontrol edilecek.&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:ImageFound DisplayName="Image Exists 'explorer.exe  GenericAc...'" Found="[IsExistElementImage]" sap:VirtualizedContainerService.HintSize="529,51" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAhAAAAAfCAYAAAC2yfR1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAhWSURBVHhe7Zw7b1xFFMfzjWjgAwA1aaioKCioEbigsHlIFLAkoUCKlSqrNE6FoqRAsQWREySQjRK0bgIOiMIEAwoyJM4DJ8M987h3zpkz97F7d+N1/j9pZO/ceZxzZu6Zv+/u+pgBAAAAAOgIBAQAAAAAOgMBAQAAAIDOQEAAAAAAoDMQEAAAAADoDAQEAAAAADoDAQEAAACAzkBAAAAAAMD8e/+JufHrgf3ZhkYBsb29ba5evWo2NzfNrVu3fC0AAAAAjgrXbh6Y4yfumZc+umt/0usmsgJiZ2fHnDp1yiwsLLCyvLxs7ty541sBAAAAYN555VMnHkIhEdGEKiBIPJBYWFxcNJcvX7ZPIaisrKzY+qWlJbO/v+9bP0vsmrXBghms7vrX/TA6V4izcyP/CoAO7K6ZwcLArDVsSbvHBmvFDgYAAA69ZRGLh1CaUAXEyZMnrXggISHZ2tqyIuLs2bO+Znrsrg7KJx9VGZqnd9R2FxCUuJvaQ0CAsZmqgKjb7+k1O4e8X+WcLe0FAMyWXgQEPWmgG5+ePOQITyKm9xRiZIZa8ikYnXuayQcCAhwypnogjyEg2D52bdh9DAEBwKGkFwGxvr5uxQEJiRxt2oxP90N6dkBAgEPGoRYQBda+6KkhBAQAh5JeBMTGxkajOKCnE1MTEKNhMXaXtyn8Xzn0xMKXodI5eTtEO7BtcqvaDFZHIklqCdU/LQml8TGxaF/YkSZe0aZFPKR/3MZgt/OHrocY2bmjfix2YS3sT9/G+8fmU58U+Wu+aGviyB1SLgahX61/5aEk9oJYYx7nal5ma936ZfamtS3qJ20tfW/Vv+PaT+R7uh84ubUh0mt8Do/0uYuAmDhe8loofn5pS5hP5IH83gXg6NCLgAhvYdDbFDlOnz5t20wDNQll8Qkibu9v/iSxscTik218WPh+cbIIB0s1lkya/JAjbJ/sIeTax7aVh03kw+7qkCXY+jGJYlwlBpVd3l+ZuIt2w8gWl0BlQo1tixKyqIt9ahxXIA9gCzs8Gvzzr/kc3taoH99bISZxnBRfGO56vN6yLvGF2ar153uq89pP5Ht+TRxyv8ek1/gchBJPa2/TvIG+4yXGk7aE/R71d/dnKmIAOGr0IiCIIBDoA5OS8PThwoULvqZfKAHIhFUesr5kk7WH1ecSlqhPkx8hk6RMXsU8sk9NgszZq88dwQ7TNuh2185hEQlWmdethVKXTdqEdhDE0HUeM20fVAj/bMyV8YX9PM56TJp8SdZKCh1l7eM+yZ6xttesbdPa9+h7itxHMek1O0dhS1UUu2vuD43+4qX4LG2xfaVtTXsXgPnk4K+vzaMf3zdP9n+xr3MC4uD2b+be8Ix5dGPTvo5RBQT9nwf6FgYlgfPnz9t/JEXCgf4HREgO9I+lpkGSoBn8Zqa2anKLkwwlBfVAcAnFjRX/HiOTJH+dJsxQ9ASZs1fz2R3U8Zg1SdPiYhP3ydnN8AdQ3K+Mg5KMtQNWPXTrxlXgsdEO4hr/5EEQEPU8znpMVF9i4r1VwOxWfC5LmFf0Tw7Igk5r36PvKXXt0mt8Dr9ewresvTl6ipdrI+qlLar44DkHgKPCw5vvmbuXjlkhQbz2Of8/EPSaeHDtivnj5RfM3UJESFQBQdA3LOirmvzGdG9thM9JkLjoG3ujZxM4v5n5oRMRJ50pCwg9uerk2quJN7ZZTWwVIYFW9tfbHbDzsmQukuWYAqJxXI14nej36JBo9C93KIl6Hmc9JvX7j3D9nC3kVzSvOOx04v70exqnLmvfp+8pde3Sa3yOAs22nL1ZeohXyxjpsW6xdwGYQw5uf2EFxIMbr9vXP/3+uBQR9JNeE3uL71gB0foJRAwJCfpcBJX4a5vhq5z9i4i6G5ZfyyV7Vt8qebgkxZKfxc1XJUmeNJsPG45NsEl7MbeWxGoPEW6TQ9ZpbbQ4izplXs1nXtdiXBWy0a0Hxalq28K/zBpLW/sREL4NjUPxYW3b+FlA/ag/2R3377z2BT36rqHv2QJlXj6HI+mfsbeWieJV46u0RY11yzUFYA7ZX3/OioiH313yNZz7X1604uHvt970NZxGAVHH1ESEvZG1m17ezO41S1o2KfAb3iYxJamwfn7OtF9sh3ZwSTsLm0QSLVHa20Rf1JW2yKQWfKw5RGTiDmNm7bakdcHfMgZKQtUOWF7XYtwMNM5gda3wl8/Z6J+PK7NViTUfR4uJH1s7MBm0JsNinVOfnK8yZvyDfqH/mvU3ujDG2vfpu4oyVugfrwkh18nhfCj7Jz62Yfx4WZty6yn7Q0CAZ4zHe9fN3sdvWJHwzycfmEc/fG+fNDz85orZW3JPHv48/qL5b/um78GZSEAQ03sS4ZOUTQhRySSoqo2enFxir4qaPL2ICGU4kolWSbw+wVb9GpKjaE9jycQbDkhXioSmJrYYHoN2Xz8tELYMRyJZjiUgCprGzeH7JXY2+Wf7FXEfpbGNaXOIthMQfqzMmsi9lu7ZfP/Oa9+j73nkPab35XNUOJ/8fSH2RlmUfjFjxUvcz1WJbYnuVzXWLfcuAHMKfUiSnjCQWJCF6nPigZhYQBDhcxFHj66JFkyETOhtGbffUyR32AIdxAuA6UJPHjbOfGi+PfG2uf7Zu/bDk030IiCOLHN4MM0zbf/6T5i7dcJftd1AvACYBRd//so8v/Kq/dkGCIjAaCieNPjHtvirZ0ZMcEjMmYAYWyg9oyBeAMyGSkC4r3Y2AQERsIdQeI/UF4iHmeDe357graJ5ERDlHqv5TAOoQLwAmCmbu1tlaQMEBAAAAAA6AwEBAAAAgM5AQAAAAACgMxAQAAAAAOgMBAQAAAAAOmLM//XvzkCbpB93AAAAAElFTkSuQmCC" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="cd26c37b-cb3a-46a7-b553-5feacca991e0" TimeoutMS="[ImageTimeout]" WaitForReady="INTERACTIVE" />
+            </ui:ImageFound.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ImageFound>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="529,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilebiliyor mu? Image ile kontrol edildi. IsExistElementImage : &quot; + IsExistElementImage.ToString]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <If Condition="[IsExistElementImage]" DisplayName="If : Element Image" sap:VirtualizedContainerService.HintSize="529,564" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="Click Element via Image" sap:VirtualizedContainerService.HintSize="242,416" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; image ile &quot;+Value+&quot; yazılacak.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <ui:ClickImage ContinueOnError="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="1000" DisplayName="Click Image : Element Image" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                  <ui:ClickImage.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:ClickImage.CursorPosition>
+                  <ui:ClickImage.Image>
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                  </ui:ClickImage.Image>
+                  <ui:ClickImage.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b54fe05a-adc9-43d3-b149-378dbbe63f49" WaitForReady="INTERACTIVE">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                    </ui:Target>
+                  </ui:ClickImage.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ClickImage>
+                <ui:TypeInto DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DelayBefore="1000" DisplayName="Type Into : Value Text" EmptyField="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="True" Text="[Value]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="0af9fd42-d635-4634-8a95-4cff0bd2ffb7" InformativeScreenshot="6fbdb661a0b983a8e87b664843425a49" WaitForReady="INTERACTIVE">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:TypeInto>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; image ile &quot;+Value+&quot; yazıldı.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Exception Handling" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Workflow : &quot; +WorkflowName+&quot; -&gt; &quot;+ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilemedi.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <Throw Exception="[new Exception(ApplicationName+&quot;, &quot;+ScreenName+&quot; ekranında &quot;+ElementName+&quot; &quot;+ElementType+&quot; erişilemedi.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>

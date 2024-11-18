@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+th {
+  border: 1px solid red;
+  text-align:center;
+  background-color:#FFF2CC;
+  white-space: nowrap;
+  font-weight: bold;
+  font-family: Calibri;
+  font-size: 16px;
+  padding: 5px;
+}
+  
+td {
+  border: 1px solid black;
+  text-align:center;
+  color:black;
+  white-space: nowrap;
+  font-family: Calibri;
+  font-size: 14px;
+  padding:5px
+}
+
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr><th>RaporAdi</th><th>Status</th><th>HataMesaji</th></tr><tr><td>Deneme1</td><td>Başarılı</td><td></td></tr><tr><td>Deneme2</td><td>Başarısız</td><td></td></tr><tr><td>Deneme3</td><td>Başarılı</td><td></td></tr><tr><td>Deneme4</td><td>Başarılı</td><td></td></tr><tr><td>Deneme5</td><td>Başarısız</td><td></td></tr>
+</table>
+
+</body>
+</html>
