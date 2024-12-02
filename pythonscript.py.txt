@@ -1,0 +1,218 @@
+import re
+import pandas as pd
+import joblib
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+# Güncel veri seti (31 hata)
+data = {
+    "log": [
+        "Selector not found. Unable to locate UI element.",
+        "Object reference not set to an instance of an object.",
+        "Extension not enabled. Unable to execute Chrome extension.",
+        "Timeout reached while waiting for the response from the server.",
+        "Activity failed due to an unknown error.",
+        "File path not found: Missing configuration file.",
+        "File in use. Unable to access the file.",
+        "Database connection failed. Unable to authenticate user.",
+        "Network error: Unable to connect to the server.",
+        "Library not defined or missing reference.",
+        "Invalid UI Element Exception occurred.",
+        "Access Denied Exception while accessing the file.",
+        "Divide by zero error in calculation.",
+        "Index out of range error encountered.",
+        "Robot is not connected to Orchestrator.",
+        "Credential not found for the specified key.",
+        "Workflow file not found error occurred.",
+        "G/Ç hatası meydana geldi.",
+        "Yetkisiz erişim hatası oluştu.",
+        "Geçersiz argüman sağlandı.",
+        "Biçim hatası algılandı.",
+        "Geçersiz işlem hatası meydana geldi.",
+        "Yetersiz bellek hatası oluştu.",
+        "Yığın taşması gerçekleşti.",
+        "Sıfıra bölme işlemi yapıldı.",
+        "Dizin aralığı dışında bir eleman erişimi denendi.",
+        "Anahtar bulunamadı hatası alındı.",
+        "XML yapısı geçersiz.",
+        "Web isteği hatası oluştu.",
+        "İş parçacığı sonlandırıldı.",
+        "Yapılandırma hatası oluştu.",
+    ],
+    "category": [
+        "Selector Error",
+        "Null Exception",
+        "Extension Error",
+        "Timeout Error",
+        "Activity Error",
+        "File Path Error",
+        "File In Use Error",
+        "Database Error",
+        "Network Error",
+        "Library Error",
+        "Invalid UI Element",
+        "Access Denied Error",
+        "Divide By Zero Error",
+        "Index Out Of Range Error",
+        "Robot Not Connected",
+        "Credential Not Found",
+        "Invoke Workflow File Not Found",
+        "G/Ç Hatası",
+        "Yetkisiz Erişim Hatası",
+        "Geçersiz Argüman Hatası",
+        "Biçim Hatası",
+        "Geçersiz İşlem Hatası",
+        "Bellek Yetersizliği",
+        "Yığın Taşması",
+        "Sıfıra Bölme Hatası",
+        "Dizin Aralığı Dışında Hatası",
+        "Anahtar Bulunamadı",
+        "XML Hatası",
+        "Web İsteği Hatası",
+        "İş Parçacığı Sonlandırma",
+        "Yapılandırma Hatası",
+    ],
+    "possible_causes": [
+        "UI elemanı bulunamıyor veya özellikleri değişmiş.",
+        "Değişken veya nesne başlatılmamış.",
+        "Gerekli tarayıcı eklentisi aktif değil.",
+        "İşlem belirtilen süre içinde tamamlanamadı.",
+        "Beklenmeyen bir hata meydana geldi.",
+        "Dosya yolu hatalı veya dosya mevcut değil.",
+        "Dosya başka bir işlem tarafından kullanılıyor.",
+        "Veritabanı bağlantı bilgileri hatalı.",
+        "Ağ bağlantısı kesilmiş veya sunucu yanıt vermiyor.",
+        "Gerekli kütüphane yüklenmemiş veya referansı eksik.",
+        "UI elemanı geçersiz veya tanınmıyor.",
+        "Erişim izni reddedildi.",
+        "Bir sayı sıfıra bölünmeye çalışıldı.",
+        "Bir dizi elemanına erişim sınırların dışında yapıldı.",
+        "Robot Orchestrator’a bağlı değil.",
+        "Kimlik bilgisi bulunamadı.",
+        "Çağrılan iş akışı dosyası mevcut değil.",
+        "G/Ç işlemi sırasında hata oluştu.",
+        "Erişim izinleri yetersiz.",
+        "Metoda uygun olmayan bir argüman sağlandı.",
+        "Beklenen veri formatı ile uyuşmazlık var.",
+        "Nesne doğru durumda değil.",
+        "Bellek yetersizliği nedeniyle işlem tamamlanamadı.",
+        "Sonsuz döngü veya özyineleme taşması.",
+        "Sıfıra bölme işlemi yapıldı.",
+        "Dizi elemanına geçersiz indeksle erişim.",
+        "Aranan anahtar mevcut değil.",
+        "XML yapısı geçersiz.",
+        "Web isteği sırasında bağlantı hatası oluştu.",
+        "İş parçacığı sonlandırıldı.",
+        "Yapılandırma dosyası hatalı veya eksik.",
+    ],
+    "solutions": [
+        "Selector'ı doğrula ve gerektiğinde güncelle.",
+        "Değişken veya nesnelerin başlatıldığından emin ol.",
+        "Tarayıcı ayarlarında eklentiyi etkinleştir.",
+        "Zaman aşımı süresini artır veya işlemi optimize et.",
+        "Hatanın kaynağını bulmak için debug yap.",
+        "Dosya yolunu kontrol et ve dosyanın varlığını doğrula.",
+        "Dosyanın başka bir işlem tarafından kullanılmadığından emin ol.",
+        "Bağlantı bilgilerini ve veritabanı erişimini kontrol et.",
+        "Ağ bağlantısını ve sunucu durumunu kontrol et.",
+        "Eksik kütüphaneyi yükle ve doğru referansı ekle.",
+        "UI elemanını yeniden tanımla veya tanıma özelliğini geliştir.",
+        "Erişim izinlerini kontrol et ve uygun izinleri sağla.",
+        "Sıfıra bölme işlemi öncesinde payda kontrolü yap.",
+        "Dizi boyutunu ve kullanılan indeksleri kontrol et.",
+        "Robot bağlantısını kontrol et ve yapılandırmayı doğrula.",
+        "Orchestrator’daki kimlik bilgilerini kontrol et.",
+        "Dosya yolunu kontrol et ve dosyanın taşınmadığından emin ol.",
+        "G/Ç işlemini yeniden başlat ve diski kontrol et.",
+        "Dosya izinlerini kontrol et.",
+        "Doğru argüman sağlandığından emin ol.",
+        "Verinin doğru formatta olduğundan emin ol.",
+        "Nesnenin geçerli bir durumda olduğundan emin ol.",
+        "Bellek kullanımı optimize edilerek işlem tekrar denenmeli.",
+        "Döngü yapılarını ve özyinelemeleri optimize et.",
+        "Sıfır değerini kontrol et.",
+        "Dizi sınırlarının dışına çıkılmadığından emin ol.",
+        "Sözlükte anahtarın varlığını doğrula.",
+        "XML formatını doğrula.",
+        "Ağ bağlantısını kontrol et.",
+        "Thread işlemlerini kontrol et.",
+        "Yapılandırma dosyasını güncelle.",
+    ],
+}
+
+# Veri setini bir DataFrame'e dönüştürme
+df = pd.DataFrame(data)
+
+# Metin vektörleştirme
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df['log'])
+y = df['category']
+
+# Modeli eğitme
+model = MultinomialNB()
+model.fit(X, y)
+
+# Model ve vektörizeri kaydetme
+joblib.dump(model, "error_classifier.pkl")
+joblib.dump(vectorizer, "vectorizer.pkl")
+
+# Hata sınıflandırma fonksiyonu
+def classify_log(log_message):
+    """
+    Verilen log mesajını sınıflandırır. Neden ve çözüm önerilerini de döner.
+    """
+    # Regex örüntüleri
+    patterns = {
+        "Selector Error": r"selector",
+        "Null Exception": r"object reference|null exception",
+        "Extension Error": r"extension",
+        "Timeout Error": r"timeout",
+        "Activity Error": r"activity",
+        "File Path Error": r"file path",
+        "File In Use Error": r"file in use",
+        "Database Error": r"database",
+        "Network Error": r"network",
+        "Library Error": r"library|reference",
+        "Invalid UI Element": r"invalid UI element",
+        "Access Denied Error": r"access denied",
+        "Divide By Zero Error": r"divide by zero",
+        "Index Out Of Range Error": r"index out of range"
+    }
+    
+    # Regex kontrolü
+    for category, pattern in patterns.items():
+        if re.search(pattern, log_message, re.IGNORECASE):
+            row = df[df['category'] == category].iloc[0]
+            return category, row['possible_causes'], row['solutions']
+    
+    # Model ile sınıflandırma
+    vectorized_log = vectorizer.transform([log_message])
+    predicted_category = model.predict(vectorized_log)[0]
+    row = df[df['category'] == predicted_category].iloc[0]
+    return predicted_category, row['possible_causes'], row['solutions']
+
+# Test logları
+test_logs = [
+    "Selector element could not be found in the UI.",
+    "Object reference not set to an instance of an object.",
+    "Timeout error occurred.",
+    "Invalid UI Element Exception while processing.",
+    "File path not found: C:/missing/file.txt",
+    "Unknown error occurred during execution."
+]
+
+# Sonuçları saklamak için liste
+results = []
+
+# Her log için sınıflandırma
+for log in test_logs:
+    category, causes, solution = classify_log(log)
+    results.append({"Log Message": log, "Category": category, "Possible Causes": causes, "Solution": solution})
+
+# Sonuçları bir DataFrame'e dönüştürme
+results_df = pd.DataFrame(results)
+
+# Sonuçları Excel'e yazma
+output_file = "ErrorClassificationResults_Updated.xlsx"
+results_df.to_excel(output_file, index=False)
+print(f"Results saved to {output_file}")
