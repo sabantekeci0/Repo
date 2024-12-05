@@ -4,7 +4,6 @@
   "description": "ExampleProject Kaynak Kodu",
   "main": "Main.xaml",
   "dependencies": {
-    "Newtonsoft.Json.Bson": "[1.0.3]",
     "UiPath.Excel.Activities": "[2.23.4]",
     "UiPath.Mail.Activities": "[1.22.2]",
     "UiPath.Python.Activities": "[1.8.2]",

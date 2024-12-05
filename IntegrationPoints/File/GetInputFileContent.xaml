@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>820.8,4055.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1032,3679.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetAndValidateInputExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -106,7 +106,7 @@
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence : GetInputExcelContent" sap:VirtualizedContainerService.HintSize="697.6,3990.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence DisplayName="Sequence : GetInputExcelContent" sap:VirtualizedContainerService.HintSize="716.8,3614.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="workflowName" />
       <Variable x:TypeArguments="x:String" Name="inputDirectory" />
@@ -119,14 +119,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Sequence : Initialization" sap:VirtualizedContainerService.HintSize="635.2,1035.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Sequence : Initialization" sap:VirtualizedContainerService.HintSize="654.4,1027.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="496,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign sap:VirtualizedContainerService.HintSize="496,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[workflowName]</OutArgument>
         </Assign.To>
@@ -134,15 +134,15 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">Workflow : GetInputFileContent -&gt; </InArgument>
         </Assign.Value>
       </Assign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[workflowName + &quot;Initialization Sequence Başladı.&quot;]" />
-      <Sequence DisplayName="Sequence : Get data from Config." sap:VirtualizedContainerService.HintSize="496,436.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[workflowName + &quot;Initialization Sequence Başladı.&quot;]" />
+      <Sequence DisplayName="Sequence : Get data from Config." sap:VirtualizedContainerService.HintSize="496,452.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign DisplayName="Assign : InputFileDirectory" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign DisplayName="Assign : InputFileDirectory" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[inputDirectory]</OutArgument>
           </Assign.To>
@@ -150,7 +150,7 @@
             <InArgument x:TypeArguments="x:String">[in_Config("InputDirectory").ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign : InputFileExtension" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign DisplayName="Assign : InputFileExtension" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[inputFileExtension]</OutArgument>
           </Assign.To>
@@ -158,7 +158,7 @@
             <InArgument x:TypeArguments="x:String">[in_Config("InputFileExtension").ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign : ArchiveDirectory" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+        <Assign DisplayName="Assign : ArchiveDirectory" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_14">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[archiveDirectory]</OutArgument>
           </Assign.To>
@@ -167,17 +167,17 @@
           </Assign.Value>
         </Assign>
       </Sequence>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[workflowName + &quot;Initialization Sequence Sonlandı.&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[workflowName + &quot;Initialization Sequence Sonlandı.&quot;]" />
     </Sequence>
-    <Sequence DisplayName="Sequence : Perform" sap:VirtualizedContainerService.HintSize="635.2,2697.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence : Perform" sap:VirtualizedContainerService.HintSize="654.4,2432.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[workflowName + &quot;Perform Sequence Başladı.&quot;]" />
-      <Sequence DisplayName="Sequence : Get Input Excel Path" sap:VirtualizedContainerService.HintSize="572.8,1302.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="592,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[workflowName + &quot;Perform Sequence Başladı.&quot;]" />
+      <Sequence DisplayName="Sequence : Get Input Excel Path" sap:VirtualizedContainerService.HintSize="592,1294.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <Sequence.Variables>
           <Variable x:TypeArguments="s:String[]" Name="Array_Files" />
         </Sequence.Variables>
@@ -187,7 +187,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign DisplayName="Assign : Get Files in InputFileDirectory" sap:VirtualizedContainerService.HintSize="510.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign DisplayName="Assign : Get Files in InputFileDirectory" sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="s:String[]">[Array_Files]</OutArgument>
           </Assign.To>
@@ -195,7 +195,7 @@
             <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(inputDirectory,"*."+inputFileExtension)]</InArgument>
           </Assign.Value>
         </Assign>
-        <If Condition="[Array_Files.Count = 1]" sap:VirtualizedContainerService.HintSize="510.4,1068.8" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[Array_Files.Count = 1]" sap:VirtualizedContainerService.HintSize="529.6,1060" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -203,14 +203,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="476.8,286.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,300.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,75.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Klasörde 1 dosya tespit edildi. Beklenen senaryo." />
-              <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Klasörde 1 dosya tespit edildi. Beklenen senaryo." />
+              <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_9">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[out_InputFilePath]</OutArgument>
                 </Assign.To>
@@ -221,7 +221,7 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Sequence : Exception Handling." sap:VirtualizedContainerService.HintSize="476.8,599.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence DisplayName="Sequence : Exception Handling." sap:VirtualizedContainerService.HintSize="496,597.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="exceptionMessage" />
               </Sequence.Variables>
@@ -231,8 +231,8 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,75.2" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Klasörde birden fazla dosya tespit edildi ya da dosya bulunamadı. Exception." />
-              <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Klasörde birden fazla dosya tespit edildi ya da dosya bulunamadı. Exception." />
+              <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[exceptionMessage]</OutArgument>
                 </Assign.To>
@@ -240,13 +240,13 @@
                   <InArgument x:TypeArguments="x:String">[inputDirectory + " dizininde " + inputFileExtension + " uzantılı " + If(Array_Files.Count=0," dosya bulunamadı.",Array_Files.Count.ToString + " adet dosya tespit edildi.")]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[workflowName + exceptionMessage]" />
-              <Throw Exception="[New BusinessRuleException(exceptionMessage)]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[workflowName + exceptionMessage]" />
+              <Throw Exception="[New BusinessRuleException(exceptionMessage)]" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </Sequence>
           </If.Else>
         </If>
       </Sequence>
-      <Sequence DisplayName="Sequence : Read Input Excel." sap:VirtualizedContainerService.HintSize="572.8,83.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+      <Sequence DisplayName="Sequence : Read Input Excel." sap:VirtualizedContainerService.HintSize="592,56.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -419,7 +419,7 @@
           </TryCatch.Catches>
         </TryCatch>
       </Sequence>
-      <Sequence DisplayName="Sequence : Edit ColumnNames." sap:VirtualizedContainerService.HintSize="572.8,715.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <Sequence DisplayName="Sequence : Edit ColumnNames." sap:VirtualizedContainerService.HintSize="592,644" sap2010:WorkflowViewState.IdRef="Sequence_20">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
