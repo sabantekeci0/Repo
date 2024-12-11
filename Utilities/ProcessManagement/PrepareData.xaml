@@ -15,7 +15,7 @@
   <sap:VirtualizedContainerService.HintSize>1792.8,4818.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PrepareData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="38">
+    <scg:List x:TypeArguments="x:String" Capacity="76">
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>Microsoft.VisualBasic.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
@@ -53,6 +53,8 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -120,9 +122,14 @@
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PrepareData" sap:VirtualizedContainerService.HintSize="779.2,4753.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence DisplayName="PrepareData" sap:VirtualizedContainerService.HintSize="1164.8000000000002,5109.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="workflowName" />
     </Sequence.Variables>
@@ -132,14 +139,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Sequence : Initialization" sap:VirtualizedContainerService.HintSize="716.8,976" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Sequence : Initialization" sap:VirtualizedContainerService.HintSize="601.6,773.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="496,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign sap:VirtualizedContainerService.HintSize="467.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[workflowName]</OutArgument>
         </Assign.To>
@@ -147,15 +154,15 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">Workflow : PrepareData -&gt; </InArgument>
         </Assign.Value>
       </Assign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[workflowName + &quot;Initialization Sequence Başladı.&quot;]" />
-      <Sequence DisplayName="Sequence : Initialize Variables." sap:VirtualizedContainerService.HintSize="496,401.6" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="467.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[workflowName + &quot;Initialization Sequence Başladı.&quot;]" />
+      <Sequence DisplayName="Sequence : Initialize Variables." sap:VirtualizedContainerService.HintSize="467.2,228" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign sap2010:Annotation.AnnotationText="Queue' ya atılacak alanların kolon isimleri eklenir." DisplayName="Assign : TransactionDataColumn List Initialize" sap:VirtualizedContainerService.HintSize="433.6,144.8" sap2010:WorkflowViewState.IdRef="Assign_88">
+        <Assign sap2010:Annotation.AnnotationText="Queue' ya atılacak alanların kolon isimleri eklenir." DisplayName="Assign : TransactionDataColumn List Initialize" sap:VirtualizedContainerService.HintSize="433.6,136" sap2010:WorkflowViewState.IdRef="Assign_88">
           <Assign.To>
             <OutArgument x:TypeArguments="scg:List(x:String)">[out_List_TransactionDataColumn]</OutArgument>
           </Assign.To>
@@ -168,39 +175,77 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Assign>
-        <Assign sap2010:Annotation.AnnotationText="Boş olmaması gereken kolon isimleri eklenir." DisplayName="Assign : List_NotNullColumn" sap:VirtualizedContainerService.HintSize="433.6,136" sap2010:WorkflowViewState.IdRef="Assign_25">
-          <Assign.To>
-            <OutArgument x:TypeArguments="scg:List(x:String)">[in_List_NotNullColumns]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="scg:List(x:String)">[New List(of String) From {}]</InArgument>
-          </Assign.Value>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </Assign>
       </Sequence>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[workflowName + &quot;Initialization Sequence Sonlandı.&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="467.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[workflowName + &quot;Initialization Sequence Sonlandı.&quot;]" />
     </Sequence>
-    <Sequence DisplayName="Sequence : Perform" sap:VirtualizedContainerService.HintSize="716.8,3236.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence : Perform" sap:VirtualizedContainerService.HintSize="601.6,3889.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="654.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[workflowName + &quot;Perform Sequence Başladı.&quot;]" />
-      <Sequence DisplayName="Sequence : Remove UnRequired Columns" sap:VirtualizedContainerService.HintSize="654.4,574.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="568,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[workflowName + &quot;Perform Sequence Başladı.&quot;]" />
+      <Sequence DisplayName="Sequence : Remove UnRequired Columns" sap:VirtualizedContainerService.HintSize="568,1457.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[workflowName + &quot;Gereksiz sütunlar tablodan siliniyor...&quot;]" />
-        <Assign DisplayName="Assign : Remove Unnecessary Columns" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="516.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[workflowName + &quot;Gereksiz sütunlar tablodan siliniyor...&quot;]" />
+        <If Condition="[in_List_NotNullColumns IsNot Nothing AndAlso in_List_NotNullColumns.Count&gt;0]" DisplayName="Remove Not Null Columns Data" sap:VirtualizedContainerService.HintSize="516.8,912" sap2010:WorkflowViewState.IdRef="If_7">
+          <If.Then>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="483.2,652" sap2010:WorkflowViewState.IdRef="Sequence_76">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[io_DataTable.AsEnumerable.Where(Function(x) in_List_NotNullColumns.Exists(Function(a) String.IsNullOrEmpty(Convert.ToString(x(a))))).ToArray().Count&gt;0]" sap:VirtualizedContainerService.HintSize="449.6,485.6" sap2010:WorkflowViewState.IdRef="If_8">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Warn" Message="[String.Join(Environment.NewLine , io_DataTable.AsEnumerable.Where(Function(x) Not in_List_NotNullColumns.Exists(Function(a) String.IsNullOrEmpty(Convert.ToString(x(a))))).&#xD;&#xA;Select(Function(x) String.Join(&quot; - &quot;,x.ItemArray.Select(Function(a) Convert.ToString(a)).Tolist())))]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <Assign DisplayName="Assign : Remove Unnecessary Columns" sap:VirtualizedContainerService.HintSize="449.6,106.4" sap2010:WorkflowViewState.IdRef="Assign_111">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="sd:DataTable">[io_DataTable]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If(io_DataTable.AsEnumerable.Where(Function(x) Not in_List_NotNullColumns.Exists(Function(a) String.IsNullOrEmpty(Convert.ToString(x(a))))).ToArray().Count&gt;0,
+io_DataTable.AsEnumerable.Where(Function(x) Not in_List_NotNullColumns.Exists(Function(a) String.IsNullOrEmpty(Convert.ToString(x(a))))).CopyToDataTable(),
+io_DataTable.Clone())]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_77">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </If.Else>
+        </If>
+        <Assign DisplayName="Assign : Remove Unnecessary Columns" sap:VirtualizedContainerService.HintSize="516.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[io_DataTable]</OutArgument>
           </Assign.To>
@@ -208,9 +253,9 @@
             <InArgument x:TypeArguments="sd:DataTable">[io_DataTable.DefaultView.ToTable(False,in_RequiredColumns.ToArray())]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[workflowName + &quot;Gereksiz sütunları silme işlemi tamamlandı.&quot;]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="516.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[workflowName + &quot;Gereksiz sütunları silme işlemi tamamlandı.&quot;]" />
       </Sequence>
-      <Sequence DisplayName="Sequence : Edit Data" sap:VirtualizedContainerService.HintSize="654.4,225.6" sap2010:WorkflowViewState.IdRef="Sequence_75">
+      <Sequence DisplayName="Sequence : Edit Data" sap:VirtualizedContainerService.HintSize="568,196.8" sap2010:WorkflowViewState.IdRef="Sequence_75">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -226,7 +271,7 @@
           </Assign.Value>
         </Assign>
       </Sequence>
-      <Sequence DisplayName="Sequence : Add Reference to Table." sap:VirtualizedContainerService.HintSize="654.4,1360.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+      <Sequence DisplayName="Sequence : Add Reference to Table." sap:VirtualizedContainerService.HintSize="568,1274.4" sap2010:WorkflowViewState.IdRef="Sequence_39">
         <Sequence.Variables>
           <Variable x:TypeArguments="scg:List(x:String)" Name="List_MissingReferenceColumn" />
         </Sequence.Variables>
@@ -236,7 +281,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_29">
+        <Assign sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_29">
           <Assign.To>
             <OutArgument x:TypeArguments="scg:List(x:String)">[List_MissingReferenceColumn]</OutArgument>
           </Assign.To>
@@ -244,7 +289,7 @@
             <InArgument x:TypeArguments="scg:List(x:String)">[in_Array_ReferenceColumns.Where(Function(colName) Not io_DataTable.Columns.Contains(colName)).ToList()]</InArgument>
           </Assign.Value>
         </Assign>
-        <If Condition="[List_MissingReferenceColumn.Any()]" sap:VirtualizedContainerService.HintSize="529.6,915.2" sap2010:WorkflowViewState.IdRef="If_6">
+        <If Condition="[List_MissingReferenceColumn.Any()]" sap:VirtualizedContainerService.HintSize="500.8,857.6" sap2010:WorkflowViewState.IdRef="If_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -252,7 +297,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence DisplayName="Sequence : Exception Handling." sap:VirtualizedContainerService.HintSize="496,490.4" sap2010:WorkflowViewState.IdRef="Sequence_36">
+            <Sequence DisplayName="Sequence : Exception Handling." sap:VirtualizedContainerService.HintSize="467.2,461.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="exceptionMessage" />
               </Sequence.Variables>
@@ -274,20 +319,20 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,254.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_37">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[workflowName + &quot;Reference olarak eklenecek sütun&quot; + If(in_Array_ReferenceColumns.Count&gt;1 ,&quot;lar&quot; ,String.Empty) + &quot; (&quot; + String.Join(&quot;, &quot;, in_Array_ReferenceColumns) + &quot;) tabloda mevcut.&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[workflowName + &quot;Reference olarak eklenecek sütun&quot; + If(in_Array_ReferenceColumns.Count&gt;1 ,&quot;lar&quot; ,String.Empty) + &quot; (&quot; + String.Join(&quot;, &quot;, in_Array_ReferenceColumns) + &quot;) tabloda mevcut.&quot;]" />
             </Sequence>
           </If.Else>
         </If>
-        <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" Unique="{x:Null}" ColumnName="Reference" DataTable="[io_DataTable]" DisplayName="Add Data Column : Reference" sap:VirtualizedContainerService.HintSize="529.6,211.2" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" MaxLength="-1" />
+        <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" Unique="{x:Null}" ColumnName="Reference" DataTable="[io_DataTable]" DisplayName="Add Data Column : Reference" sap:VirtualizedContainerService.HintSize="500.8,211.2" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" MaxLength="-1" />
       </Sequence>
-      <Sequence DisplayName="Sequence : Data Validation" sap:VirtualizedContainerService.HintSize="654.4,615.2" sap2010:WorkflowViewState.IdRef="Sequence_54">
+      <Sequence DisplayName="Sequence : Data Validation" sap:VirtualizedContainerService.HintSize="568,528.8" sap2010:WorkflowViewState.IdRef="Sequence_54">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Int32" Name="loopIndex" />
         </Sequence.Variables>
@@ -297,20 +342,20 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[loopIndex]" DataTable="[io_DataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="592,494.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[loopIndex]" DataTable="[io_DataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="534.4,436.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Sequence : Set Fields" sap:VirtualizedContainerService.HintSize="558.4,305.6" sap2010:WorkflowViewState.IdRef="Sequence_74">
+              <Sequence DisplayName="Sequence : Set Fields" sap:VirtualizedContainerService.HintSize="500.8,248" sap2010:WorkflowViewState.IdRef="Sequence_74">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Sequence : Reference" sap:VirtualizedContainerService.HintSize="496,216.8" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                <Sequence DisplayName="Sequence : Reference" sap:VirtualizedContainerService.HintSize="467.2,188" sap2010:WorkflowViewState.IdRef="Sequence_73">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -337,17 +382,17 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
       </Sequence>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="654.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[workflowName + &quot;Perform Sequence Sonlandı.&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="568,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[workflowName + &quot;Perform Sequence Sonlandı.&quot;]" />
     </Sequence>
-    <Sequence DisplayName="Sequence : After Perform" sap:VirtualizedContainerService.HintSize="716.8,452" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Sequence : After Perform" sap:VirtualizedContainerService.HintSize="601.6,423.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[workflowName + &quot;After Perform Sequence Başladı.&quot;]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[workflowName + &quot;After Perform Sequence Sonlandı.&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[workflowName + &quot;After Perform Sequence Başladı.&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[workflowName + &quot;After Perform Sequence Sonlandı.&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>
